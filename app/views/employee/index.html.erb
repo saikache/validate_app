@@ -1,0 +1,17 @@
+<!-- Employee form for validationg ID code -->
+<h4>Validate Employee ID</h4>
+<hr>
+<% if @employee.errors.any? %>
+  <ul class="errors">
+    <% @employee.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="form-group">
+  <%= form_for @employee, :url => validate_id_code_path(@user) do |f| %>
+    <%= render partial: 'employee/form_fields', locals: {f: f} %>
+    <%= f.submit "Validates ID Code" %>
+  <%end%>
+</div><!-- form-group close -->
